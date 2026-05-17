@@ -2,15 +2,15 @@
 
 ## Status
 
-| Field         | Value      |
-|---------------|------------|
-| Status        | Accepted   |
-| Date          | 2026-07-01 |
-| Author        | Timo Bigdon |
+| Field         | Value         |
+|---------------|---------------|
+| Status        | Accepted      |
+| Date          | 2026-07-01    |
+| Author        | Timo Bigdon   |
 
-## Context and Problem
+## Contxt and Problem
 
-Self-hosted Git needed.
+Self-hosted Git is needed.
 
 ## Decision Driver
 
@@ -26,13 +26,13 @@ Self-hosted Git needed.
 
 Forgejo.
 
-## Konsequencen
+## Consequencs
 
-### Positiv
-- Forks bleiben unter Kontrolle
+### Positive
+- Forks remain under control
 
 ## Change Log
 
-| Datum      | Author      | Änderung           |
+| Date       | Author      | Change             |
 |------------|-------------|--------------------|
-| 2026-07-01 | Timo Bigdon | Initial Acceptance |
+| 2026-07-01 | Timo Bigdon | Initial acceptance |

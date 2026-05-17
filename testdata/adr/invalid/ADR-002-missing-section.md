@@ -2,39 +2,39 @@
 
 ## Status
 
-| Field         | Value      |
-|---------------|------------|
-| Status        | Accepted   |
-| Date          | 2026-02-01 |
-| Author        | Timo Bigdon |
+| Field         | Value         |
+|---------------|---------------|
+| Status        | Accepted      |
+| Date          | 2026-02-01    |
+| Author        | Timo Bigdon   |
 
-## Kontext und Problem
+## Context and Problem
 
-Das System benötigt eine Event-Streaming-Plattform für asynchrone Kommunikation zwischen Services.
+The system requires an event streaming platform for asynchronous communication between services.
 
 ## Considered Options
 
 ### Option A: Apache Kafka
-Industry-Standard mit hoher Throughput.
+Industry standard with high throughput.
 
 ### Option B: RabbitMQ
-Einfacher zu betreiben, aber andere Garantien.
+Easier to operate, but different guarantees.
 
 ## Decision Outcome
 
-Gewählt wird Option A: Apache Kafka.
+Selected: Option A, Apache Kafka.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Hohe Throughput
-- Stark etabliertes Tooling
+### Positive
+- High throughput
+- Strongly established tooling
 
-### Negativ
-- Hohe Operations-Komplexität
+### Negative
+- High operational complexity
 
 ## Change Log
 
-| Datum      | Author      | Änderung           |
+| Date       | Author      | Change             |
 |------------|-------------|--------------------|
-| 2026-02-01 | Timo Bigdon | Initial Acceptance |
+| 2026-02-01 | Timo Bigdon | Initial acceptance |

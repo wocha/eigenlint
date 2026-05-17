@@ -2,63 +2,63 @@
 
 ## Status
 
-| Field         | Value      |
-|---------------|------------|
-| Status        | Accepted   |
-| Date          | 2026-01-15 |
-| Author        | Timo Bigdon |
-| Supersedes    | -          |
-| Superseded by | -          |
+| Field         | Value         |
+|---------------|---------------|
+| Status        | Accepted      |
+| Date          | 2026-01-15    |
+| Author        | Timo Bigdon   |
+| Supersedes    | -             |
+| Superseded by | -             |
 
-## Kontext und Problem
+## Context and Problem
 
-Das System benötigt eine persistente Datenbank für State-Storage. Die Anforderungen umfassen ACID-Garantien, JSON-Unterstützung und gute Operability.
+The system requires a persistent database for state storage. Requirements include ACID guarantees, JSON support, and good operability.
 
 ## Decision Drivers
 
-- ACID-Compliance für Transaktions-Sicherheit
-- JSON-Datentyp für flexible Schema-Evolution
-- Verbreitete Tool-Unterstützung im Cloud-Native-Ökosystem
-- Operability: Backup, Replication, Monitoring
-- Kosten-Effizienz im Self-Hosting
+- ACID compliance for transactional safety
+- JSON data type for flexible schema evolution
+- Broad tooling support in cloud-native ecosystem
+- Operability: backup, replication, monitoring
+- Cost efficiency in self-hosting
 
 ## Considered Options
 
 ### Option A: PostgreSQL
-Bewährte relationale Datenbank mit starker JSON-Unterstützung.
+Proven relational database with strong JSON support.
 
 ### Option B: MySQL
-Verbreitet, aber schwächere JSON-Features und weniger strikte Defaults.
+Widely used, but weaker JSON features and less strict defaults.
 
 ### Option C: SQLite
-Einfach, aber nicht geeignet für Multi-Node-Deployments.
+Simple, but not suitable for multi-node deployments.
 
 ## Decision Outcome
 
-Gewählt wird Option A: PostgreSQL. Die Kombination aus ACID-Garantien und JSON-Support trifft die Anforderungen am besten.
+Selected: Option A, PostgreSQL. The combination of ACID guarantees and JSON support best meets the requirements.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Robuste Transaktions-Sicherheit
-- Flexibles Schema durch JSONB
-- Breites Tool-Ökosystem
+### Positive
+- Robust transactional safety
+- Flexible schema through JSONB
+- Wide tooling ecosystem
 
-### Negativ
-- Komplexere Operations als SQLite
-- Höhere Ressourcen-Anforderungen
+### Negative
+- More complex operations than SQLite
+- Higher resource requirements
 
 ### Neutral
-- Migration zu anderer Datenbank wäre aufwändig
+- Migration to a different database would be expensive
 
 ## Validation Criteria
 
-- PostgreSQL 16 deployed in der Test-Umgebung
-- Backup-Strategie mit RPO < 1h validiert
-- Monitoring mit Prometheus-Exporter aktiv
+- PostgreSQL 16 deployed in the test environment
+- Backup strategy with RPO < 1h validated
+- Monitoring with Prometheus exporter active
 
 ## Change Log
 
-| Datum      | Author      | Änderung                          |
-|------------|-------------|-----------------------------------|
-| 2026-01-15 | Timo Bigdon | Initial Acceptance                |
+| Date       | Author      | Change                       |
+|------------|-------------|------------------------------|
+| 2026-01-15 | Timo Bigdon | Initial acceptance           |

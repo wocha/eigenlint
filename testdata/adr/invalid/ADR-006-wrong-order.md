@@ -2,43 +2,43 @@
 
 ## Status
 
-| Field         | Value      |
-|---------------|------------|
-| Status        | Accepted   |
-| Date          | 2026-06-01 |
-| Author        | Timo Bigdon |
+| Field         | Value         |
+|---------------|---------------|
+| Status        | Accepted      |
+| Date          | 2026-06-01    |
+| Author        | Timo Bigdon   |
 
 ## Considered Options
 
 ### Option A: Cilium
-eBPF-basiert, modern.
+eBPF-based, modern.
 
 ### Option B: Calico
-Älter, bewährt.
+Older, proven.
 
-## Kontext und Problem
+## Context and Problem
 
-Wir brauchen Network-Policies in Kubernetes.
+We need network policies in Kubernetes.
 
 ## Decision Drivers
 
-- eBPF-Vorteile
+- eBPF advantages
 - Performance
 
 ## Decision Outcome
 
 Cilium.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
+### Positive
 - Performance
 
-### Negativ
-- Lernkurve
+### Negative
+- Learning curve
 
 ## Change Log
 
-| Datum      | Author      | Änderung           |
+| Date       | Author      | Change             |
 |------------|-------------|--------------------|
-| 2026-06-01 | Timo Bigdon | Initial Acceptance |
+| 2026-06-01 | Timo Bigdon | Initial acceptance |

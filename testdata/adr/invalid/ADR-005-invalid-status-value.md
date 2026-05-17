@@ -8,38 +8,38 @@
 | Date          | 2026-05-01    |
 | Author        | Timo Bigdon   |
 
-## Kontext und Problem
+## Context and Problem
 
-Service-zu-Service-Kommunikation braucht Authentifizierung.
+Service-to-service communication requires authentication.
 
 ## Decision Drivers
 
-- Sicherheit
-- Standardkonformität
-- Geringer Performance-Overhead
+- Security
+- Standards compliance
+- Low performance overhead
 
 ## Considered Options
 
 ### Option A: mTLS
-Standard, weit verbreitet.
+Standard, widely adopted.
 
-### Option B: JWT-Token
-Flexibler, aber komplexer.
+### Option B: JWT tokens
+More flexible, but more complex.
 
 ## Decision Outcome
 
-Gewählt wird Option A: mTLS.
+Selected: Option A, mTLS.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Hohe Sicherheit
+### Positive
+- High security
 
-### Negativ
-- Zertifikats-Management
+### Negative
+- Certificate management overhead
 
 ## Change Log
 
-| Datum      | Author      | Änderung           |
+| Date       | Author      | Change             |
 |------------|-------------|--------------------|
-| 2026-05-01 | Timo Bigdon | Initial Acceptance |
+| 2026-05-01 | Timo Bigdon | Initial acceptance |

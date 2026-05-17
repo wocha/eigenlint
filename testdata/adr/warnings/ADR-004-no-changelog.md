@@ -2,38 +2,38 @@
 
 ## Status
 
-| Field         | Value      |
-|---------------|------------|
-| Status        | Proposed   |
-| Date          | 2026-04-01 |
-| Author        | Timo Bigdon |
+| Field         | Value         |
+|---------------|---------------|
+| Status        | Proposed      |
+| Date          | 2026-04-01    |
+| Author        | Timo Bigdon   |
 
-## Kontext und Problem
+## Context and Problem
 
-Das System braucht standardisierte Observability.
+The system needs standardized observability.
 
 ## Decision Drivers
 
-- Vendor-Neutralität
-- Breite Tool-Unterstützung
-- Standardisierung
+- Vendor neutrality
+- Broad tooling support
+- Standardization
 
 ## Considered Options
 
 ### Option A: OpenTelemetry
-Vendor-neutraler Standard.
+Vendor-neutral standard.
 
-### Option B: Vendor-spezifische Lösung
-Schneller Start, aber Lock-In.
+### Option B: Vendor-specific solution
+Faster start, but lock-in.
 
 ## Decision Outcome
 
-Gewählt wird Option A: OpenTelemetry.
+Selected: Option A, OpenTelemetry.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Vendor-Neutralität
+### Positive
+- Vendor neutrality
 
-### Negativ
-- Etwas mehr Setup-Aufwand
+### Negative
+- Slightly higher setup overhead

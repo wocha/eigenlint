@@ -5,37 +5,37 @@
 Status: Accepted
 Date: 2026-03-01
 
-## Kontext und Problem
+## Context and Problem
 
-Wir brauchen eine schnelle Cache-Schicht.
+We need a fast caching layer.
 
 ## Decision Drivers
 
-- Niedrige Latenz
-- Einfache Operability
+- Low latency
+- Simple operability
 
 ## Considered Options
 
 ### Option A: Redis
-Verbreiteter In-Memory-Store.
+Widely used in-memory store.
 
 ### Option B: Memcached
-Älter, weniger Features.
+Older, fewer features.
 
 ## Decision Outcome
 
-Gewählt wird Option A: Redis.
+Selected: Option A, Redis.
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Niedrige Latenz
+### Positive
+- Low latency
 
-### Negativ
-- Memory-Bound
+### Negative
+- Memory-bound
 
 ## Change Log
 
-| Datum      | Author      | Änderung           |
+| Date       | Author      | Change             |
 |------------|-------------|--------------------|
-| 2026-03-01 | Timo Bigdon | Initial Acceptance |
+| 2026-03-01 | Timo Bigdon | Initial acceptance |

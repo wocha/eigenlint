@@ -20,3 +20,8 @@ These ADR markdown files are used to verify EigenLint's check behavior. They are
 | invalid/ADR-006-wrong-order.md | PASS | PASS | PASS (TBD) |
 | invalid/ADR-007-empty.md | FAIL | FAIL | FAIL |
 | invalid/ADR-008-typos.md | PASS | FAIL | PASS |
+
+## Notes
+
+- Fixture 6 (wrong section order) currently expected to pass all MVP checks. A future `section_order_check` would catch this case.
+- Fixture 8 (typos) tests strictness of section name matching. Multiple typos in section headers ("Contxt" instead of "Context", "Cosidered" instead of "Considered", etc.) should be caught by `sections_check`.
