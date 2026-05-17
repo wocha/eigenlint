@@ -10,104 +10,104 @@
 | Supersedes    | -                                        |
 | Superseded by | -                                        |
 
-## Kontext und Problem
+## Context and Problem
 
-Mit wachsender ADR-Sammlung in EigenState-Core wird manuelle Konsistenz-Prüfung unzuverlässig. Pflicht-Sektionen können vergessen werden, Status-Werte können inkonsistent sein, Change-Logs können fehlen.
+As the ADR collection in EigenState-Core grows, manual consistency checking becomes unreliable. Mandatory sections may be forgotten, status values may be inconsistent, change logs may be missing.
 
-Zusätzlich dient dieser Linter als Pilotprojekt für die in ADR-000 dokumentierte MADR+AI-Generation-Annex-Methode. Das Tool wird benutzt, um die Methode aus Anwender-Sicht zu validieren.
+Additionally, this linter serves as a pilot project for the MADR-with-AI-Generation-Annex methodology documented in ADR-000. The tool is used to validate the methodology from an applier's perspective.
 
 ## Decision Drivers
 
-- Schnelle Ausführbarkeit für CI/CD-Integration (sub-Sekunde für 20 ADRs)
-- Single-Binary-Deployment ohne Runtime-Dependencies
-- Idiomatische Sprache für CLI-Tools
-- Erweiterbar um neue Checks ohne Architektur-Änderung
-- Lernprojekt für erste vollständige Go-Implementation des Autors
-- Validierung der MADR+Annex-Methode am realen Use Case
+- Fast execution for CI/CD integration (sub-second for 20 ADRs)
+- Single-binary deployment without runtime dependencies
+- Idiomatic language for CLI tools
+- Extensible with new checks without architectural changes
+- Learning project for the author's first complete Go implementation
+- Validation of the MADR+Annex methodology against a real use case
 
 ## Considered Options
 
-### Option A: Python-Script
-Vertraut, schnell zu schreiben, aber Runtime-Dependencies und kein Lernwert.
+### Option A: Python Script
+Familiar, fast to write, but introduces runtime dependencies and offers no learning value.
 
-### Option B: Bash-Script
-Kein Build, aber skaliert nicht über 100 Zeilen sauber.
+### Option B: Bash Script
+Zero build overhead, but does not scale cleanly beyond 100 lines.
 
-### Option C: Go-Binary
-Lernkurve, aber idiomatisch und Single-Binary-Distribution.
+### Option C: Go Binary
+Learning curve required, but idiomatic and produces single-binary distributables.
 
 ## Decision Outcome
 
-Gewählt wird Option C: Go-Binary. Lernwert und Deployment-Vorteile überwiegen initialen Setup-Aufwand.
+Selected: Option C, Go binary. Learning value and deployment advantages outweigh the initial setup effort.
 
 ## AI-Generation-Annex
 
-### Constraints für Code-Generierung
+### Constraints for Code Generation
 
-- MUST: Verwende github.com/spf13/cobra für CLI-Struktur, nicht das flag-Package
-- MUST: Strukturiere nach Go-Standard-Layout mit cmd/eigenlint/main.go und internal/
-- MUST: Jeder Check ist eine eigene Funktion mit klarer Signatur, die ADR-Daten nimmt und Issues zurückgibt
-- MUST: Output ist JSON-serialisierbar UND human-readable, Flag --format=json|text (Default: text)
-- MUST: Exit-Code 0 bei Pass, 1 bei Linter-Fehlern, 2 bei Tool-internen Fehlern
-- MUST: Konfigurationspfad über --path Flag, Default docs/architecture/adr
-- SHOULD: Verwende einen Markdown-Parser nur wenn nötig, sonst Regex
-- SHOULD: Logge auf stderr, Output auf stdout (Unix-Pipeline-tauglich)
+- MUST: Use github.com/spf13/cobra for CLI structure, not the flag package
+- MUST: Follow Go standard layout with cmd/eigenlint/main.go and internal/
+- MUST: Each check is its own function with a clear signature taking ADR data and returning Issues
+- MUST: Output is both JSON-serializable AND human-readable, controlled via --format=json|text (default: text)
+- MUST: Exit code 0 on pass, 1 on lint failures, 2 on tool-internal errors
+- MUST: Configuration path via --path flag, default docs/architecture/adr
+- SHOULD: Use a markdown parser only when necessary, otherwise regex
+- SHOULD: Log to stderr, output to stdout (Unix pipeline compatible)
 
-### Verbotene Implementierungsmuster
+### Forbidden Implementation Patterns
 
-- Keine init()-Funktionen mit Side-Effects
-- Kein direktes os.Exit() außerhalb von main.go
-- Keine String-Concatenation für JSON-Output
-- Keine Java-Style Builder-Pattern für einfache Structs
-- Keine globalen Variablen für Konfiguration
-- Kein Panic auf erwartbaren Fehlern
+- No init() functions with side effects
+- No direct os.Exit() outside of main.go
+- No string concatenation for JSON output
+- No Java-style Builder pattern for simple structs
+- No global variables for configuration
+- No panic on expected errors
 
 ### Machine-Readable References
 
-- Requires: ADR-000 (ADR-Format-Konvention)
+- Requires: ADR-000 (ADR format convention)
 - Conflicts-With: -
 - Supersedes: -
 - Implementation-Hint: notes/go-lernpfad.md
 - Validation-Script: scripts/validate-adr-linter.sh
 
-## Detaillierte Festlegungen
+## Detailed Specifications
 
-### Welche Checks zuerst implementieren (MVP)
+### MVP Checks to Implement First
 
-1. status_check: Status-Tabelle vorhanden mit Status, Date, Author
-2. sections_check: Pflicht-Sektionen vorhanden (Kontext und Problem, Decision Drivers, Considered Options, Decision Outcome, Konsequenzen)
-3. changelog_check: Change Log existiert oder Hinweis
+1. status_check: status table present with Status, Date, Author fields
+2. sections_check: mandatory sections present (Context and Problem, Decision Drivers, Considered Options, Decision Outcome, Consequences)
+3. changelog_check: Change Log section exists or warning is raised
 
-### Output-Format Anforderungen
+### Output Format Requirements
 
-- Text-Mode: pro ADR eine Block-Ausgabe mit Check-Name, Pass/Fail-Status, ggf. Zeilennummer und Message
-- JSON-Mode: Summary mit total/passed/failed, plus Array von ADR-Ergebnissen mit allen Checks und Issues
-- Beide Modi müssen mit grep beziehungsweise jq weiterverarbeitbar sein
+- Text mode: one block per ADR with check name, pass/fail status, optional line number and message
+- JSON mode: summary with total/passed/failed, plus per-ADR results array
+- Both modes must be processable with grep or jq respectively
 
-## Konsequenzen
+## Consequences
 
-### Positiv
-- Automatisch durchsetzbare ADR-Konsistenz
-- Tool als Bewerbungs-Asset
-- Abgeschlossener Go-Lernkreislauf
-- Methodik-Validierung am realen Use Case
+### Positive
+- Automatically enforceable ADR consistency
+- Tool as portfolio asset
+- Complete Go learning cycle
+- Methodology validation against real use case
 
-### Negativ
-- Lernkurve Go
-- Wartungs-Last bei ADR-Format-Erweiterungen
+### Negative
+- Go learning curve
+- Maintenance burden as ADR format evolves
 
 ### Neutral
-- Tool ist auf eigene ADR-Konventionen zugeschnitten
+- Tool is tailored to the author's specific ADR conventions
 
 ## Validation Criteria
 
-- Linter prüft alle ADRs des Repos in unter 1 Sekunde
-- Mindestens drei MVP-Checks implementiert
-- JSON-Output ist gültiges JSON, parsbar von jq
-- Tool erkennt mindestens eine bewusst eingeführte Fehler-ADR
+- Linter checks all ADRs in the repo within one second
+- At least three MVP checks implemented
+- JSON output is valid JSON, parseable by jq
+- Tool correctly identifies at least one deliberately introduced faulty ADR
 
 ## Change Log
 
-| Datum      | Author | Änderung                        |
-|------------|--------|---------------------------------|
-| 2026-05-15 | Claude | Initial Acceptance, AI-generiert |
+| Date       | Author | Change                            |
+|------------|--------|-----------------------------------|
+| 2026-05-15 | Claude | Initial acceptance, AI-generated  |
